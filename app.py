@@ -26,8 +26,8 @@ db = SQLAlchemy(app)
 import hashlib
 
 # Usa tus llaves de prueba o producción de Wompi (disponibles en wompi.co)
-WOMPI_PUBLIC_KEY = "pub_test_OclzgTsfvomR8x5QvbIGZ4NgI8aLHfh0"  # Reemplaza por tu llave pública
-WOMPI_INTEGRITY_SECRET = "test_integrity_yNa21JGkgxW3F5VfjoxmCZ8XS27KzW1v"  # Reemplaza por tu secreto de integridad
+WOMPI_PUBLIC_KEY = "pub_prod_Z1AH4I75wJz17Nd97gJNQj1Hv1aWT3td"  # Reemplaza por tu llave pública
+WOMPI_INTEGRITY_SECRET = "prod_integrity_w7PrY7hj8wsP4LTKRQd1LUOhF4e1b8fl"  # Reemplaza por tu secreto de integridad
 
 @app.route("/generar-firma-wompi", methods=["POST"])
 def generar_firma_wompi():
