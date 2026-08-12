@@ -1,3 +1,5 @@
 Flask
 gunicorn
 pandas
+Flask-SQLAlchemy
+psycopg2-binary
