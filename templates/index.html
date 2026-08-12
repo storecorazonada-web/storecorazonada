@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Corazonada</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logofav.png') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Pacifico&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- ========================================== -->
+    <!-- CONFIGURACIÓN PARA COMPARTIR EN REDES (OG) -->
+    <!-- ========================================== -->
+    <meta property="og:title" content="Corazonada - Tienda Oficial">
+    <meta property="og:description" content="Descubre los mejores productos de maquillaje, cuidado facial y belleza. Realza tu belleza natural con nuestra exclusiva selección de cosméticos de alta calidad. ¡Envíos a todo el país!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tiendapagaalrecibir.com/">
+    
+    <!-- LA CLAVE: El enlace a tu imagen -->
+    <meta property="og:image" content="https://www.tiendapagaalrecibir.com/static/logo-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+    <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        class="logo-img"
+    >
+
+
+    </div>
+
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="buscar" type="text" placeholder="Buscar productos">
+    </div>
+
+    <div class="acciones">
+        <button id="cartButton">
+            🛒 <span id="contador">0</span>
+        </button>
+
+        <a href="/login">
+            <button>👤</button>
+        </a>
+    </div>
+
+</header>
+
+
+<section class="hero-slider">
+
+    <div class="slide active">
+        <a href="/maquillaje" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
+            <img src="{{ url_for('static', filename='banner2.jpg') }}">
+            <div class="slide-text">
+                <h1>Resalta tu belleza</h1>
+                <p>Todo lo que necesitas para crear el maquillaje perfecto.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="slide">
+        <a href="/skincare" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
+            <img src="{{ url_for('static', filename='banner4.jpg') }}">
+            <div class="slide-text">
+                <h1>Línea Skincare</h1>
+                <p>Cuida, hidrata y revitaliza tu piel con nuestros mejores productos.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="slide">
+        <a href="/perfumes" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
+            <img src="{{ url_for('static', filename='banner1.jpg') }}">
+            <div class="slide-text">
+                <h1>El Arte de la Perfumería</h1>
+                <p>Las mejores esencias y notas aromáticas para destacar tu estilo.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="slide">
+        <a href="/belleza" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
+            <img src="{{ url_for('static', filename='banner3.jpg') }}">
+            <div class="slide-text">
+                <h1>Línea Belleza</h1>
+                <p>Los mejores productos para consentirte y cuidar de ti todos los días.</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="slide">
+        <a href="/belleza" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
+            <img src="{{ url_for('static', filename='banner5.jpg') }}">
+            <div class="slide-text">
+                <h1>Resalta tu belleza natural</h1>
+                <p>Los mejores productos para potenciar tu estilo y cuidar de ti todos los días.</p>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<section class="categorias">
+
+    <h2 class="titulo-categorias">
+        Categorías
+    </h2>
+
+    <div class="categorias-grid">
+
+        
+        <a href="{{ url_for('maquillaje') }}" class="categoria">
+            <img src="{{ url_for('static', filename='cat-maquillaje.jpg') }}">
+            <span>Maquillaje</span>
+        </a>
+
+        
+
+        <a href="{{ url_for('skincare') }}" class="categoria">
+            <img src="{{ url_for('static', filename='cat-skincare.jpg') }}">
+            <span>Skincare</span>
+        </a>
+
+        <a href="{{ url_for('perfumes') }}" class="categoria">
+            <img src="{{ url_for('static', filename='cat-perfumes.jpg') }}">
+            <span>Perfumes</span>
+        </a>
+
+        <a href="{{ url_for('belleza') }}" class="categoria">
+            <img src="{{ url_for('static', filename='cat-belleza.jpg') }}">
+            <span>Belleza</span>
+        </a>
+
+        <a href="{{ url_for('accesorios') }}" class="categoria">
+            <img src="{{ url_for('static', filename='cat-accesorios.jpg') }}">
+            <span>Accesorios</span>
+        </a>
+
+    </div>
+
+</section>
+
+<h2 class="section-title">
+    Productos Destacados
+</h2>
+
+<div class="slider-productos">
+
+    {% if productos %}
+
+        <!-- BUCLE DE PRODUCTOS -->
+{% for p in productos %}
+<div class="card"
+     data-categoria="{{ p.categoria }}"
+     onclick="abrirModal('{{ p.nombre }}', '{{ p.precio }}', '{{ p.imagen }}', '{{ p.imagen_2 }}', '{{ p.imagen_3 }}', '{{ p.descripcion }}')">
+
+    <span class="badge-oferta">¡OFERTA!</span>
+
+    <div class="card-img-wrapper">
+        <img src="{{ p.imagen if p.imagen else url_for('static', filename='producto-default.jpg') }}" alt="{{ p.nombre }}">
+    </div>
+
+    <div class="card-content">
+        <h3>{{ p.nombre }}</h3>
+        <div class="precios">
+            <span class="precio-actual">$ {{ "{:,.0f}".format(p.precio).replace(",", ".") }}</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+    {% else %}
+
+        <div class="sin-productos">
+            <h3>No hay productos registrados</h3>
+            <p>Ingresa al panel de administración y agrega productos.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+<!-- MODAL DETALLE DE PRODUCTO UNIFORME -->
+<div id="modal" class="modal">
+    <div class="modal-content modal-producto-content">
+        <span onclick="cerrarModal()" class="cerrar">&times;</span>
+
+        <!-- Columna Izquierda: Imagen Principal + Miniaturas -->
+        <div class="modal-galeria">
+            <div class="modal-img-container">
+                <img id="modalImg" alt="Producto Principal">
+            </div>
+            
+            <div class="miniaturas" id="miniaturasContenedor">
+                <img id="thumb1" class="thumb active" onclick="cambiarFotoPrincipal(this.src)">
+                <img id="thumb2" class="thumb" onclick="cambiarFotoPrincipal(this.src)">
+                <img id="thumb3" class="thumb" onclick="cambiarFotoPrincipal(this.src)">
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Información del Producto -->
+        <div class="modal-info">
+            <div class="modal-info-header">
+                <h2 id="modalNombre"></h2>
+                <h3 id="modalPrecio"></h3>
+            </div>
+
+            <div class="modal-descripcion-container">
+                <p id="modalDescripcion"></p>
+            </div>
+
+            <button id="addCart" class="btn-agregar-modal">
+                🛒 Agregar al carrito
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="sidebarCart">
+
+    <div class="cart-header">
+
+        <h2>Mi Carrito</h2>
+
+        <button id="closeCart">✖</button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-footer">
+        <!-- Checkbox de Ramo -->
+<div class="upsell-checkbox-container">
+    <label class="upsell-label">
+        <input type="checkbox" id="checkRamo" onchange="manejarCheckboxRamo(this)">
+        <span>¿Deseas agregar un hermoso ramo por $15.000?</span>
+    </label>
+    <!-- Aquí aparecerá el nombre del ramo que elijan -->
+    <div id="ramoElegidoTexto" style="display:none; margin-top: 5px; font-size: 13px; color: #6a1b9a; font-weight: bold;"></div>
+</div>
+        <h3>
+            Total: $
+            <span id="total">0</span>
+        </h3>
+
+        <button class="btn-wompi" onclick="setTimeout(function(){ document.getElementById('sidebarCart').classList.remove('active'); }, 50);">
+            Pagar con PSE
+        </button>
+
+        <button class="btn-contra" onclick="setTimeout(function(){ document.getElementById('sidebarCart').classList.remove('active'); }, 50);">
+            Contra Entrega
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ========================================== -->
+<!-- SECCIÓN NUESTRAS CATEGORÍAS                -->
+<!-- ========================================== -->
+<section class="categorias-sectionn">
+    <h2 class="section-title">Nuestras Categorías</h2>
+    <div class="categorias-gridd">
+
+        <!-- Cuadro 1: Maquillaje -->
+        <a href="/maquillaje" class="categoria-cardd">
+            <div class="categoria-img-container">
+                <!-- Cambia el src por tu imagen de maquillaje -->
+                <img src="/static/cat-maquillaje.jpg" alt="Maquillaje">
+                <div class="categoria-overlay">LÍNEA DE<br>MAQUILLAJE</div>
+            </div>
+            <div class="categoria-link">Línea Maquillaje &rarr;</div>
+        </a>
+
+        <!-- Cuadro 2: Skincare -->
+        <a href="/skincare" class="categoria-cardd">
+            <div class="categoria-img-container">
+                <!-- Cambia el src por tu imagen de skincare -->
+                <img src="/static/cat-skincare.jpg" alt="Skincare">
+                <div class="categoria-overlay">LÍNEA DE<br>SKINCARE</div>
+            </div>
+            <div class="categoria-link">Línea Skincare &rarr;</div>
+        </a>
+
+        <!-- Cuadro 3: Perfumes -->
+        <a href="/perfumes" class="categoria-cardd">
+            <div class="categoria-img-container">
+                <img src="/static/cat-perfumes.jpg" alt="Perfumes">
+                <div class="categoria-overlay">LÍNEA DE<br>PERFUMES</div>
+            </div>
+            <div class="categoria-link">Línea Perfumes &rarr;</div>
+        </a>
+
+        <!-- Cuadro 4: Accesorios -->
+        <a href="/accesorios" class="categoria-cardd">
+            <div class="categoria-img-container">
+                <img src="/static/cat-accesorios.jpg" alt="Accesorios">
+                <div class="categoria-overlay">LÍNEA DE<br>ACCESORIOS</div>
+            </div>
+            <div class="categoria-link">Línea Accesorios &rarr;</div>
+        </a>
+
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- BANNER MAYORISTAS                          -->
+<!-- ========================================== -->
+<div class="banner-mayorista">
+    <h2>¿Quieres comprar al por mayor?</h2>
+    <p>Regístrate aquí y pronto te contactaremos</p>
+    
+    <!-- Enlace directo a WhatsApp -->
+    <a href="https://wa.me/573118677095?text=Hola,%20me%20gustaría%20recibir%20información%20para%20comprar%20al%20por%20mayor." 
+       target="_blank" 
+       class="btn-mayorista" 
+       style="text-decoration: none; display: inline-block;">
+       Enviar solicitud
+    </a>
+</div>
+
+
+<section>
+
+    <h2 class="section-title">Nuestros clientes lo dicen por nosotros</h2>
+
+    <div class="testimonios-grid">
+
+        <div class="testimonio-card">
+            <h3>Nathalya</h3>
+            <!-- Toma la imagen del producto 1 de la base de datos -->
+            <img src="{{ productos[0].imagen if productos|length > 0 and productos[0].imagen else url_for('static', filename='producto-default.jpg') }}">
+            <div class="estrellas">⭐⭐⭐⭐⭐</div>
+            <p>Me encantó, huele delicioso y deja mi cabello muy suave.</p>
+        </div>
+
+        <div class="testimonio-card">
+            <h3>Valentina</h3>
+            <!-- Toma la imagen del producto 2 -->
+            <img src="{{ productos[1].imagen if productos|length > 1 and productos[1].imagen else url_for('static', filename='producto-default.jpg') }}">
+            <div class="estrellas">⭐⭐⭐⭐⭐</div>
+            <p>Muy buen producto, lo recomiendo muchísimo.</p>
+        </div>
+
+        <div class="testimonio-card">
+            <h3>Carmen Cecilia</h3>
+            <!-- Toma la imagen del producto 3 -->
+            <img src="{{ productos[2].imagen if productos|length > 2 and productos[2].imagen else url_for('static', filename='producto-default.jpg') }}">
+            <div class="estrellas">⭐⭐⭐⭐⭐</div>
+            <p>Excelente calidad. Muy satisfecha con la compra.</p>
+        </div>
+
+        <div class="testimonio-card">
+            <h3>Loriannys</h3>
+            <!-- Toma la imagen del producto 4 -->
+            <img src="{{ productos[3].imagen if productos|length > 3 and productos[3].imagen else url_for('static', filename='producto-default.jpg') }}">
+            <div class="estrellas">⭐⭐⭐⭐⭐</div>
+            <p>Desde el primer uso me encantó. Lo volvería a comprar.</p>
+        </div>
+        
+    </div>
+
+</section>
+
+
+<section class="barra-logistica">
+
+    <div class="logistica-track">
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Compra fácil y segura
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-circle-check"></i>
+            Excelente calidad
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-headset"></i>
+            Asesoría personalizada
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-truck-fast"></i>
+            Envíos a toda Colombia
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-credit-card"></i>
+            Múltiples métodos de pago
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-box"></i>
+            Rastrea tu pedido
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-shield-halved"></i>
+            Compra 100% segura
+        </div>
+
+        <!-- Duplicados para movimiento infinito -->
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Compra fácil y segura
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-circle-check"></i>
+            Excelente calidad
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-headset"></i>
+            Asesoría personalizada
+        </div>
+
+        <div class="item-logistica">
+            <i class="fa-solid fa-truck-fast"></i>
+            Envíos a toda Colombia
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="banner-pagos">
+
+    <img
+        src="{{ url_for('static', filename='medios_pago.png') }}"
+        alt="Métodos de pago">
+
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<!-- BOTON WHATSAPP -->
+
+<a
+    href="https://wa.me/573118677095?text=Hola,%20quiero%20más%20información%20sobre%20sus%20productos"class="whatsapp-btn"target="_blank">
+
+    <i class="fa-brands fa-whatsapp"></i>
+    
+</a>
+
+<div id="pedidoModal" class="modal">
+    <div class="modal-content modal-pedido-content">
+        <span class="cerrar" onclick="cerrarPedido()">&times;</span>
+
+        <div class="pedido-header">
+            <h2>📦 Datos para la entrega</h2>
+            <p>Ingresa tus datos para coordinar el envío contra entrega</p>
+        </div>
+
+        <div class="transportadoras-seccion">
+                                
+                <div class="transportadoras-grid">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStmFJ24VeCrt2ZXOlJFiyuCqdgaLyMlUAy9Uw2RlLMEw&s=10" alt="Envia" class="img-transportadora">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrX1esHZz1Hzsc6iFhSBMNV0CwaitMctTfkL_7utq8Uw&s=10" alt="Interrapidísimo" class="img-transportadora">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe2sxKKBAkyRI6rkB-g4m1d6fz4X8SMNpXMJPxT7Tgbg&s=10" alt="Servientrega" class="img-transportadora">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRf1vwIiLrTX6vUMD6GOITOb-v49_vZwM6nxx-cT-zCQ&s=10" alt="Coordinadora" class="img-transportadora">
+                </div>
+            </div>
+
+        <form id="pedidoForm">
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="cliente" placeholder="Nombre completo" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" id="telefono" placeholder="Teléfono / WhatsApp" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" id="direccion" placeholder="Dirección de entrega" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-city"></i>
+                <input type="text" id="ciudad" placeholder="Ciudad / Municipio" required>
+            </div>
+
+            <button type="submit" class="btn-confirmar-pedido">
+                Confirmar Pedido
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL PEDIDO EXITOSO -->
+
+<div id="pedidoExitoso" class="pedido-exitoso-overlay">
+
+    <div class="pedido-exitoso-card">
+
+        <img src="{{ url_for('static', filename='logo.png') }}"
+             class="logo-exitoso">
+
+        <h2>
+            ✅ ¡Pedido Confirmado!
+        </h2>
+
+        <p>
+            Hemos recibido tu pedido correctamente.
+        </p>
+
+        <p>
+            <strong>
+                En pocos minutos nos comunicaremos contigo
+                para confirmar tu pedido y coordinar la entrega.
+            </strong>
+        </p>
+
+        <button onclick="cerrarExitoso()">
+            Entendido
+        </button>
+
+    </div>
+
+</div>
+<!-- Modal Selección de Ramo -->
+<div id="modalRamo" class="modal-ramo-overlay" style="display: none;">
+    <div class="modal-ramo-content">
+        <span class="close-ramo" onclick="cerrarModalRamo()">&times;</span>
+        <h3 style="margin-bottom: 5px; color: #333;">Elige tu Ramo</h3>
+        <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Toca la imagen del que más te guste</p>
+        
+        <div class="ramo-grid">
+            <!-- Ramo 1 -->
+            <div class="ramo-item" onclick="seleccionarRamo('Ramo de Rosas Rojas')">
+                <img src="/static/ramo1.jpg" alt="Ramo 1">
+            </div>
+            <!-- Ramo 2 -->
+            <div class="ramo-item" onclick="seleccionarRamo('Ramo Girasoles')">
+                <img src="/static/ramo2.jpg" alt="Ramo 2">
+            </div>
+            <!-- Ramo 3 -->
+            <div class="ramo-item" onclick="seleccionarRamo('Ramo Mixto')">
+                <img src="/static/ramo3.jpg" alt="Ramo 3">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ========================================== -->
+<!-- SECCIÓN CONTACTO                           -->
+<!-- ========================================== -->
+<div class="contacto-wrapper">
+    <div class="contacto-container">
+        <h2 class="contacto-titulo">Contactanos</h2>
+        <!-- Aquí activamos la función al enviar -->
+        <form class="contacto-form" onsubmit="enviarWhatsApp(event)">
+            
+            <!-- Fila 1: Nombre y Correo -->
+            <div class="contacto-fila">
+                <input type="text" id="contacto-nombre" placeholder="Nombre" class="contacto-input" required>
+                <input type="email" id="contacto-correo" placeholder="Correo electrónico *" class="contacto-input" required>
+            </div>
+            
+            <!-- Fila 2: Teléfono -->
+            <div class="contacto-fila">
+                <input type="tel" id="contacto-telefono" placeholder="Número de teléfono" class="contacto-input">
+            </div>
+            
+            <!-- Fila 3: Comentario -->
+            <div class="contacto-fila">
+                <textarea id="contacto-comentario" placeholder="Comentario" class="contacto-textarea" required></textarea>
+            </div>
+            
+            <!-- Botón de enviar -->
+            <button type="submit" class="contacto-btn">Enviar</button>
+            
+        </form>
+    </div>
+</div>
+
+<!-- Widget Oficial de Wompi -->
+<script type="text/javascript" src="https://checkout.wompi.co/widget.js"></script>
+</body>
+</html>

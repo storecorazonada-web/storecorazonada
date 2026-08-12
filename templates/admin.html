@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="admin-container">
+
+    <div class="admin-header">
+
+    <h1>📦 Inventario de Productos</h1>
+
+    <div class="admin-actions">
+
+        <a href="/dashboard" class="btn-inicio">
+            📊 Dashboard
+        </a>
+
+        <a href="/" class="btn-inicio">
+            🏠 Ir a la Tienda
+        </a>
+
+        
+        <a href="/pedidos" class="btn-inicio">
+            📋 Ver Pedidos
+        </a>
+
+
+        <a href="/logout" class="btn-home">
+            🚪 Cerrar Sesión
+        </a>
+
+    </div>
+
+</div>
+    <div class="form-card">
+
+        <div class="form-card">
+    <form method="POST">
+        <input name="nombre" placeholder="Nombre Producto" required>
+
+        <select name="categoria" required>
+            <option value="">Seleccione Categoría</option>
+            <option value="Maquillaje">Maquillaje</option>
+            <option value="Skincare">Skincare</option>
+            <option value="Cabello">Cabello</option>
+            <option value="Perfumes">Perfumes</option>
+            <option value="Belleza">Belleza</option>
+            <option value="Accesorios">Accesorios</option>
+        </select>
+
+        <input name="precio" type="number" placeholder="Precio" required>
+        <input name="stock" type="number" placeholder="Stock" required>
+        
+        <!-- CAMPOS PARA LAS 3 IMÁGENES -->
+        <input name="imagen" placeholder="URL Imagen Principal (Obligatoria)" required>
+        <input name="imagen_2" placeholder="URL Imagen 2 (Opcional)">
+        <input name="imagen_3" placeholder="URL Imagen 3 (Opcional)">
+
+        <button type="submit">Guardar Producto</button>
+    </form>
+</div>
+
+<div class="form-card">
+
+    <h3>📤 Carga Masiva de Productos</h3>
+
+    <!-- Aquí estaba el error, faltaba abrir la etiqueta <form> correctamente -->
+    <form action="/cargar-productos" method="POST" enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="archivo"
+            accept=".xlsx,.csv"
+            required>
+
+        <button type="submit">
+            📤 Importar Excel
+        </button>
+
+    </form>
+
+</div>
+
+
+    <div class="tabla-card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for p in productos %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+
+                    <td>
+                        <img
+                        src="{{ p.imagen }}"
+                        class="img-admin">
+                    </td>
+
+                    <td>{{ p.nombre }}</td>
+
+                    <td>{{ p.categoria }}</td>
+
+                    <td>${{ "{:,.0f}".format(p.precio) }}</td>
+
+                    <td>
+
+                        {% if p.stock <= 10 %}
+                        <span class="stock-bajo">
+                            {{ p.stock }}
+                        </span>
+                        {% else %}
+                        {{ p.stock }}
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a
+                        class="btn-editar"
+                        href="/editar/{{ p.id }}">
+                        Editar
+                        </a>
+
+                        <a
+                        class="btn-eliminar"
+                        href="/eliminar/{{ p.id }}">
+                        Eliminar
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

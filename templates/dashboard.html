@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logofav.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <div class="admin-header">
+
+        <h1>📊 Dashboard de Ventas</h1>
+
+        <div class="admin-actions">
+
+            <a href="/admin" class="btn-home">
+            📦 Inventario
+        </a>
+
+        <a href="/" class="btn-home">
+            🏠 Ir a la Tienda
+        </a>
+
+        
+        <a href="/pedidos" class="btn-home">
+            📋 Ver Pedidos
+        </a>
+
+
+        <a href="/logout" class="btn-logout">
+            🚪 Cerrar Sesión
+        </a>
+
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="card-dashboard">
+
+            <h3>💰 Ventas Totales</h3>
+
+            <h2>
+                $ {{ "{:,.0f}".format(ventas_totales).replace(",", ".") }}
+            </h2>
+
+        </div>
+
+        <div class="card-dashboard">
+
+            <h3>📋 Total Pedidos</h3>
+
+            <h2>{{ total_pedidos }}</h2>
+
+        </div>
+
+        <div class="card-dashboard">
+
+            <h3>📦 Productos</h3>
+
+            <h2>{{ total_productos }}</h2>
+
+        </div>
+
+        <div class="card-dashboard">
+
+            <h3>⏳ Pendientes</h3>
+
+            <h2>{{ pedidos_pendientes }}</h2>
+
+        </div>
+
+    </div>
+
+    <div class="tabla-card">
+
+        <h2>Últimos Pedidos</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Cliente</th>
+
+                    <th>Total</th>
+
+                    <th>Estado</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for pedido in ultimos_pedidos %}
+
+                <tr>
+
+                    <td>{{ pedido.id }}</td>
+
+                    <td>{{ pedido.cliente }}</td>
+
+                    <td>
+                        $ {{ "{:,.0f}".format(pedido.total).replace(",", ".") }}
+                    </td>
+
+                    <td>{{ pedido.estado }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

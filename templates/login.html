@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='logofav.png') }}">    
+<link rel='stylesheet' href='{{ url_for("static", filename="style.css") }}'>
+<title>Login</title>
+</head>
+<body>
+<div class="login-box">
+
+    <!-- LOGO AÑADIDO ENCIMA DEL TÍTULO -->
+    <img src="{{ url_for('static', filename='logo.png') }}" class="logo-login" alt="Logo Corazonada">
+    <form method="POST">
+        <input type="text" name="usuario" placeholder="Usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        
+        <button type="submit">Ingresar</button>
+    </form>
+
+</div>
+</body>

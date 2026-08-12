@@ -1,0 +1,2856 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important; /* Mágicamente esconde todo lo que se salga por los lados */
+}
+.banner-pagos, 
+.barra-logistica {
+    width: 100%;
+    overflow: hidden !important; 
+}
+
+body{
+    font-family:'Segoe UI', sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.70),
+            rgba(255,255,255,0.70)
+        ),
+        url('/static/fondo.png');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* HEADER */
+
+header{
+    background: rgba(255,255,255,0.15);
+    height:70px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 50px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+}
+
+
+
+
+.logo-img{
+    width:130px;
+    height:130px;
+    object-fit:contain;
+}
+
+
+.search-box{
+    position:relative;
+    width:500px;
+    max-width:45%;
+}
+
+.search-box i{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#999;
+    font-size:18px;
+}
+
+.buscar{
+    width:100%;
+    height:50px;
+
+    padding-left:50px;
+
+    border:none;
+    border-radius:50px;
+
+    background:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+    transition:.3s;
+}
+
+.buscar:focus{
+    box-shadow:0 0 0 5px rgba(233,108,173,.15);
+}
+
+.acciones{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.acciones button{
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.acciones button:hover{
+    transform:translateY(-3px);
+    background:#fff0f7;
+}
+
+#cartButton{
+    position:relative;
+    font-size:20px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+#contador{
+    position:absolute;
+
+    top:-5px;
+    right:-5px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#ff4081;
+    color:white;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    height:550px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.15)
+    ),
+    url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1600');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+}
+.hero-categoria {
+    width: 100%;
+    height: 100vh; /* 100vh significa que ocupará el 100% del alto de la pantalla. Puedes cambiarlo a un alto fijo como 400px o 60vh si prefieres que sea más corto */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hacemos que la imagen llene el contenedor sin deformarse */
+.hero-categoria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esta es la magia: recorta la imagen proporcionalmente para llenar el espacio */
+    object-position: center; /* Centra la imagen para que no se corten las caras o el logo */
+    display: block;
+}
+
+
+.hero-content{
+    margin-left:80px;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:70px;
+    margin-bottom:20px;
+    text-shadow:3px 3px 12px rgba(0,0,0,.4);
+}
+
+.hero-content p{
+    font-size:25px;
+    text-shadow:2px 2px 10px rgba(0,0,0,.4);
+}
+
+/* CATEGORIAS */
+
+.categorias{
+    width:95%;
+    margin:40px auto;
+    text-align:center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.categoria,
+.categoria:visited,
+.categoria:hover,
+.categoria:active{
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+.titulo-categorias{
+    text-align:center;
+    font-size:80px;
+    font-weight:300;
+    color:#ea6ca9;
+    margin:30px 0;
+    font-family: 'Sacramento', cursive;
+}
+
+.categorias-grid{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.categoria{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.categoria:hover{
+    transform:translateY(-8px);
+}
+
+.categoria img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid #f7b7d2;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.categoria span{
+    display:block;
+    margin-top:15px;
+    font-size:18px;
+    font-weight:600;
+    color:#444;
+}
+
+/* TITULOS */
+
+.section-title{
+    text-align:center;
+    font-size:80px;
+    font-weight:300;
+    color:#ea6ca9;
+    margin:30px 0;
+    font-family: 'Sacramento', cursive;
+}
+
+.section-title strong{
+    font-weight:800;
+}
+
+/* PRODUCTOS */
+
+
+
+
+
+.productos{
+    width:98%;
+    max-width:1800px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,minmax(220px,1fr));
+
+    gap:20px;
+
+    padding:40px 20px;
+    
+}
+
+
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+    width:100%;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:15px;
+    font-size:18px;
+    min-height:60px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.card p{
+    padding:0 15px;
+    color:#e91e63;
+    font-weight:bold;
+    font-size:18px;
+}
+
+
+
+/* TESTIMONIOS */
+
+.testimonios-grid{
+
+    width:95%;
+    max-width:1400px;
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+}
+
+.testimonio-card{
+
+    background:rgba(255,255,255,.92);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    text-align:left;
+}
+
+.testimonio-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(233,108,173,.18);
+}
+
+.estrellas{
+
+    color:#ffc107;
+
+    font-size:18px;
+
+    margin-bottom:12px;
+}
+
+.testimonio-card h3{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#444;
+
+    margin-bottom:15px;
+}
+
+.testimonio-card img{
+
+    width:75px;
+
+    height:75px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #f6b8d2;
+
+    margin-bottom:15px;
+}
+
+.testimonio-card p{
+
+    font-size:17px;
+
+    color:#666;
+
+    line-height:1.6;
+}
+
+/* BENEFICIOS */
+
+.beneficios{
+    background:white;
+    margin-top:80px;
+    padding:80px 40px;
+}
+
+.beneficios h2{
+    text-align:center;
+    color:#e46cad;
+    font-size:55px;
+    margin-bottom:60px;
+}
+
+.beneficios-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.beneficio{
+    text-align:center;
+    padding:25px;
+}
+
+.beneficio{
+    font-size:45px;
+}
+
+.beneficio h3{
+    margin-top:15px;
+    color:#444;
+    font-size:30px;
+}
+
+
+.btn-comprar{
+    width:calc(100% - 30px);
+    margin:15px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#ff5fa2;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-comprar:hover{
+    background:#e91e63;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:4000;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 750px; /* Ancho ampliado para acomodar las dos columnas */
+    background: white;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+
+    /* Cambiamos a Flexbox en horizontal */
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Columna Izquierda: Imagen */
+.modal-content img {
+    width: 50%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Columna Derecha: Información */
+.modal-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Alineado a la izquierda para mejor lectura */
+}
+
+.modal-info h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.modal-info h3 {
+    font-size: 22px;
+    color: #e91e63;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-info p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+.cerrar{
+    position:absolute;
+    right:20px;
+    top:15px;
+    cursor:pointer;
+    font-size:25px;
+}
+
+/* CARRITO */
+
+/* SIDEBAR CARRITO CON FONDO DE LA PÁGINA */
+
+#sidebarCart {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 420px;
+    height: 100vh;
+    justify-content: space-between; /* Mantiene header arriba y footer abajo */
+    overflow: hidden; /* Evita que todo el sidebar haga scroll completo */
+
+    /* FONDO IDÉNTICO AL BODY (Degradado + Imagen de marcas de agua) */
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.85), 
+            rgba(255, 255, 255, 0.85)
+        ),
+        url('/static/fondo.png');
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+
+    transition: .3s;
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -6px 0 20px rgba(0, 0, 0, .15);
+}
+
+#sidebarCart.active{
+    right:0;
+}
+
+.cart-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(242, 215, 226, 0.6);
+    background: transparent !important;
+}
+
+.cart-header h2{
+    color:#444;
+}
+
+#cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+}
+/* 3. Estilo opcional para hacer la barra de scroll sutil y bonita (WebKit) */
+#cartItems::-webkit-scrollbar {
+    width: 6px;
+}
+
+#cartItems::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb {
+    background: #f15b9f; /* Color rosado acorde a tu marca */
+    border-radius: 10px;
+}
+
+#cartItems::-webkit-scrollbar-thumb:hover {
+    background: #e91e63;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(242, 215, 226, 0.6);
+    background: transparent !important;
+}
+
+.cart-footer h3{
+    margin-bottom:15px;
+}
+
+/* BOTONES PAGO */
+
+.btn-wompi{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#6f42c1;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    margin-bottom:10px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-contra{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#ff5fa2;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* LOGIN */
+
+.login-box{
+    width:400px;
+    margin:80px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.login-box input{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.login-box button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#e91e63;
+    color:white;
+    cursor:pointer;
+}
+
+/* TABLAS ADMIN */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+}
+
+th{
+    background:#e8a2c4;
+    color:white;
+}
+
+th,
+td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+.admin-container{
+    width:95%;
+    margin:auto;
+    padding:30px;
+}
+
+.admin-header{
+    margin-bottom:20px;
+}
+
+.admin-header h1{
+    color:#e91e63;
+}
+
+.form-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.form-card form{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.form-card input{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.form-card button{
+    border:none;
+    background:#e91e63;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.tabla-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.img-admin{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:10px;
+}
+.btn-editar,
+    .btn-eliminar {
+        display: inline-block !important; /* Obliga a los botones a respetar los márgenes verticales */
+        margin: 5px !important; /* Añade un espacio seguro alrededor de ambos botones */
+        width: 85px; /* Opcional: Hace que ambos botones tengan el mismo ancho para que se vean más ordenados */
+    }
+
+
+.btn-editar{
+    background:#2196f3;
+    color:white;
+    padding:8px 15px;
+    border-radius:8px;
+    text-decoration:none;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-eliminar{
+    background:#f44336;
+    color:white;
+    padding:8px 15px;
+    border-radius:8px;
+    text-decoration:none;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.stock-bajo{
+    color:red;
+    font-weight:bold;
+}
+
+.admin-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.admin-actions{
+    display:flex;
+    gap:15px;
+}
+
+.btn-home{
+    background: transparent !important;   /* Fondo totalmente transparente */
+    color: #f15b9f;                       /* Color del texto e icono */
+    border: 2px solid #f15b9f;            /* Borde rosado de la marca */
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 50px;                  /* Forma de cápsula redondeada */
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif !important;
+    box-shadow: 0 2px 10px rgba(241, 91, 159, 0.1);
+}
+
+.btn-home:hover{
+    background: #f15b5b !important;      /* Se llena de rosado al pasar el mouse */
+    color: #ffffff;                       /* El texto cambia a blanco */
+    transform: translateY(-2px);           /* Pequeño levante sutil */
+    box-shadow: 0 5px 15px rgba(241, 91, 159, 0.35);
+}
+
+.btn-logout{
+    background:#e74c3c;
+    color:white;
+    padding:12px 20px;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-logout:hover{
+    background:#c0392b;
+}
+
+
+/* CARRUSEL */
+
+.hero-slider{
+    position:relative;
+    width:100%;
+    height:500px;
+    overflow:hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 6;
+    transition: opacity 1s ease;
+    
+    /* ¡NUEVO! Desactiva los clics en las imágenes invisibles */
+    pointer-events: none; 
+    visibility: hidden;
+}
+
+.slide a {
+    position: relative;
+    z-index: 2; /* Pone el botón completo por encima de la sombra */
+}
+
+.slide.active {
+    opacity: 6;
+    
+    /* ¡NUEVO! Activa los clics solo en la imagen visible */
+    pointer-events: auto; 
+    visibility: visible;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter: brightness(0.6);
+}
+
+.slide::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.25);
+    pointer-events: none; /* <--- ¡Esta es la magia que deja pasar el clic! */
+    z-index: 1; /* Ayuda a organizar las capas */
+}
+
+.slide-text{
+    position:absolute;
+    left:8%;
+    top:50%;
+    transform:translateY(-50%);
+    color:white;
+    z-index:2;
+}
+
+.slide-text h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.slide-text p{
+    font-size:24px;
+}
+
+/* BARRA LOGISTICA DINAMICA */
+
+.barra-logistica{
+    width:100%;
+    background:#f8d8e8;
+    overflow:hidden;
+
+    padding:15px 0;
+
+    margin:20px 0;
+
+    border-top:1px solid #f2bcd5;
+    border-bottom:1px solid #f2bcd5;
+}
+
+.logistica-track{
+    display:flex;
+    align-items:center;
+
+    width:max-content;
+
+    animation:scrollLogistica 25s linear infinite;
+}
+
+.item-logistica{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-right:60px;
+
+    white-space:nowrap;
+
+    color:#d85b99;
+
+    font-size:18px;
+
+    font-weight:600;
+}
+
+.item-logistica i{
+    font-size:24px;
+    color:#e65a9d;
+}
+
+.item-logistica::after{
+    content:"|";
+    margin-left:30px;
+    color:#e9a0c3;
+}
+
+@keyframes scrollLogistica{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+
+}
+/* BANNER MEDIOS DE PAGO */
+
+.banner-pagos{
+    width:100%;
+    background:white;
+    text-align:center;
+
+    padding:10px 0;
+
+    border-top:1px solid #f2d7e2;
+    border-bottom:1px solid #f2d7e2;
+}
+
+.banner-pagos img{
+    max-width:100%;
+    height:auto;
+
+    display:block;
+    margin:auto;
+}
+/* BOTON WHATSAPP */
+
+.whatsapp-btn{
+
+    position:fixed;
+
+    left:25px;
+    bottom:25px;
+
+    width:65px;
+    height:65px;
+
+    background:#25D366;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+
+    z-index:9999;
+
+    box-shadow:0 5px 20px rgba(37,211,102,.4);
+
+    transition:.3s;
+
+}
+
+.whatsapp-btn i{
+
+    color:white;
+
+    font-size:35px;
+
+}
+
+.whatsapp-btn:hover{
+
+    transform:scale(1.1);
+
+    background:#20ba5a;
+
+}
+#pedidoForm {
+    width: 100%;
+    max-width: 440px; /* Ajusta este valor si los quieres aún más anchos (ej. 480px) */
+    margin: 0 auto;   /* Lo mantiene perfectamente centrado dentro del modal */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#pedidoForm input{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+#pedidoForm button{
+    background:#ff5fa2;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:10px;
+    cursor:pointer;
+    font-family: 'Poppins', sans-serif !important;
+}
+/* MODAL PEDIDO EXITOSO */
+
+.pedido-exitoso-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+}
+
+.pedido-exitoso-card{
+
+    background:white;
+
+    width:90%;
+    max-width:500px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+
+    animation:zoomIn .3s ease;
+}
+
+.logo-exitoso{
+
+    width:110px;
+    margin-bottom:15px;
+}
+
+.pedido-exitoso-card h2{
+
+    color:#22a447;
+
+    font-size:38px;
+
+    margin-bottom:15px;
+}
+
+.pedido-exitoso-card p{
+
+    font-size:20px;
+
+    color:#555;
+
+    line-height:1.7;
+
+    margin-bottom:15px;
+}
+
+.pedido-exitoso-card button{
+
+    background:#22a447;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 35px;
+
+    border-radius:10px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.pedido-exitoso-card button:hover{
+
+    background:#1d8c3c;
+}
+
+@keyframes zoomIn{
+
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+.login-box textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    resize:vertical;
+
+    min-height:100px;
+
+    font-size:15px;
+
+    margin-bottom:15px;
+
+}
+/* BOTON AGREGAR AL CARRITO */
+
+#addCart{
+
+    width:100%;
+
+    background:#ff8aba;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    margin-top:15px;
+
+    transition:.3s;
+
+    font-family: 'Poppins', sans-serif !important;
+
+}
+
+#addCart:hover{
+
+    background:#ff6ca8;
+
+    transform:translateY(-2px);
+
+}
+.item-carrito {
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(242, 215, 226, 0.5);
+    align-items: center;
+}
+
+.carrito-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #f2bcd5;
+    flex-shrink: 0;
+}
+
+.carrito-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.carrito-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.carrito-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif !important;
+}
+.btn-eliminar-icon {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.btn-eliminar-icon:hover {
+    color: #cc0000;
+    transform: scale(1.15);
+}
+.carrito-precio {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+}
+.carrito-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+/* Selector de Cantidad compacto */
+.cantidad-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fdf0f6;
+    padding: 2px 6px;
+    border-radius: 20px;
+    border: 1px solid #f6b8d2;
+}
+
+.cantidad-box button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: #ff5fa2;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.cantidad-box button:hover {
+    background: #e91e63;
+}
+
+.cantidad-box span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    min-width: 14px;
+    text-align: center;
+}
+.subtotal-monto {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e91e63;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.subtotal{
+
+    margin-top:10px;
+
+    color:#e91e63;
+
+    font-weight:bold;
+
+}
+
+.btn-eliminar{
+
+    margin-top:10px;
+
+    background:#ff4d4d;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-family: 'Poppins', sans-serif !important;
+
+}
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+}
+
+.card-dashboard{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+}
+
+.card-dashboard h3{
+
+    color:#666;
+
+    margin-bottom:10px;
+
+}
+
+.card-dashboard h2{
+
+    color:#f15b9f;
+
+    font-size:40px;
+
+    margin:0;
+
+}
+.btn-inicio {
+    background: transparent !important;   /* Fondo totalmente transparente */
+    color: #f15b9f;                       /* Color del texto e icono */
+    border: 2px solid #f15b9f;            /* Borde rosado de la marca */
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 50px;                  /* Forma de cápsula redondeada */
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif !important;
+    box-shadow: 0 2px 10px rgba(241, 91, 159, 0.1);
+}
+
+/* EFECTO AL PASAR EL CURSOR (HOVER) */
+.btn-inicio:hover {
+    background: #f15b9f !important;      /* Se llena de rosado al pasar el mouse */
+    color: #ffffff;                       /* El texto cambia a blanco */
+    transform: translateY(-2px);           /* Pequeño levante sutil */
+    box-shadow: 0 5px 15px rgba(241, 91, 159, 0.35);
+}
+/* =========================================
+   CARRUSEL Y TARJETAS MINIMALISTAS (ESTILO TRENDY)
+   ========================================= */
+
+.slider-productos {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    
+    gap: 20px;
+    padding: 20px 10px 40px 10px;
+    width: 95%;
+    max-width: 1400px;
+    margin: auto;
+    
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+/* --- Tarjeta Limpia y Plana --- */
+.slider-productos .card,
+.card {
+    flex: 0 0 auto !important;
+    width: 260px !important;
+    max-width: 260px !important;
+    scroll-snap-align: start;
+    
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slider-productos .card:hover,
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Badge de Oferta Naranja --- */
+.badge-oferta {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    background: #ff7d26 !important; /* Naranja vibrante */
+    color: #ffffff !important;      /* Texto blanco */
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    z-index: 5 !important;
+    text-transform: uppercase !important;
+    font-family: 'Poppins', sans-serif !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* --- Iconos Flotantes --- */
+.acciones-flotantes {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+}
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.btn-icon:hover {
+    color: #ea6ca9;
+    transform: scale(1.15);
+}
+
+/* --- Imagen Contenida (Sin recortes) --- */
+.card-img-wrapper {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card-img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* --- Textos y Precios --- */
+.card-content {
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    min-height: 38px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.precios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.precio-tachado {
+    font-size: 13px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.precio-actual {
+    font-size: 18px;
+    color: #e91e63;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* --- Diseño de la barra deslizante --- */
+.slider-productos::-webkit-scrollbar {
+    height: 10px;
+}
+
+.slider-productos::-webkit-scrollbar-track {
+    background: rgba(233, 108, 173, 0.12);
+    border-radius: 10px;
+}
+
+.slider-productos::-webkit-scrollbar-thumb {
+    background: #ff5fa2;
+    border-radius: 10px;
+}
+
+.slider-productos::-webkit-scrollbar-thumb:hover {
+    background: #e91e63;
+}
+
+/* ESTILO DE TÍTULOS EN HERO DE CATEGORÍAS */
+
+.hero-texto {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+.hero-texto h1 {
+    font-family: 'Sacramento', cursive !important; /* Misma fuente que Productos Destacados */
+    font-size: 80px;                               /* Tamaño destacado */
+    color: #ea6ca9;                                /* Color rosado de tu marca */
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+}
+
+.hero-texto p {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 20px;
+    color: #555;
+    font-weight: 400;
+}
+
+/* =========================================
+   GALERÍA DE FOTOS EN EL MODAL
+   ========================================= */
+
+.modal-galeria {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-galeria img#modalImg {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.thumb:hover {
+    transform: scale(1.08);
+    border-color: #ff5fa2;
+}
+/* =========================================
+   ESTILOS PARA CAMBIO DE ESTADO DE PEDIDOS
+   ========================================= */
+
+.form-estado {
+    margin: 0;
+    padding: 0;
+}
+
+.select-estado {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Colores dinámicos por Estado */
+.select-estado.pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+.select-estado.confirmado {
+    background-color: #cce5ff;
+    color: #004085;
+    border-color: #b8daff;
+}
+
+.select-estado.entregado {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.select-estado.rechazado {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+/* ESTILO DEL BOTÓN DE CERRAR CARRITO */
+#closeCart {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+#closeCart:hover {
+    background: #fff0f7;
+    color: #e91e63;
+    transform: rotate(90deg); /* Animación de giro sutil */
+}
+/* ESTILOS DE LA CAJA DE LOGIN */
+
+.login-box {
+    width: 400px;
+    margin: 80px auto;
+    background: white;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+    
+    /* Centra la imagen y los textos verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* TAMAÑO Y AJUSTE DEL LOGO EN LOGIN */
+.logo-login {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+    font-size: 24px;
+}
+
+.login-box form {
+    width: 100%; /* Asegura que los inputs ocupen todo el ancho disponible */
+}
+/* =========================================
+   ESTILOS PARA EL MODAL DE PEDIDO
+   ========================================= */
+
+/* Tamaño compacto y centrado */
+/* MODAL MÁS ANCHO Y CÓMODO */
+.modal-pedido-content {
+    max-width: 520px !important;
+    width: 90% !important;
+    height: auto !important; /* Permite que el modal crezca según el contenido */
+    padding: 30px 25px 35px 25px !important; /* Añade espacio cómodo en la parte inferior */
+    border-radius: 24px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+    background: #ffffff !important;
+    
+    /* Asegura que nada se salga de los bordes redondeados */
+    overflow: hidden !important; 
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Alineación limpia del encabezado */
+.pedido-header {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.pedido-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.pedido-header p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Formulario */
+#pedidoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Grupos de Input con Icono */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group i {
+    position: absolute;
+    left: 14px;
+    color: #f15b9f;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px 12px 42px !important; /* Espacio para el icono */
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif !important;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #f15b9f;
+    box-shadow: 0 0 8px rgba(241, 91, 159, 0.15);
+}
+
+/* Botón de Confirmación */
+.btn-confirmar-pedido {
+    width: 100% !important;
+    padding: 14px !important;
+    margin-top: 20px !important; /* Margen superior controlado */
+    margin-bottom: 0 !important;
+    background: linear-gradient(135deg, #ff72b6, #f15b9f) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(241, 91, 159, 0.35) !important;
+    box-sizing: border-box !important;
+}
+
+.btn-confirmar-pedido:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 91, 159, 0.5);
+}
+/* =========================================
+   SECCIÓN TRANSPORTADORAS VERTICALES
+   ========================================= */
+
+.transportadoras-seccion {
+    text-align: center;
+}
+
+.transportadoras-titulo {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Disposición vertical de las 4 imágenes */
+.transportadoras-grid {
+    display: flex;
+    flex-direction:row; /* Alineación de arriba hacia abajo */
+    align-items: center;
+    gap: 10px; /* Separación uniforme entre cada logo */
+}
+
+.img-transportadora {
+    height: 32px; /* Altura máxima controlada para uniformidad */
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    filter: grayscale(20%); /* Efecto suave que combina con el diseño */
+    transition: all 0.3s ease;
+}
+
+.img-transportadora:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+/* =========================================
+   ESTILOS DE MODAL UNIFORME DE PRODUCTO
+   ========================================= */
+
+/* Caja principal con dimensiones fijas */
+.modal-producto-content {
+    max-width: 780px !important;
+    width: 90% !important;
+    height: 480px !important; /* Altura fija para uniformidad */
+    padding: 30px !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- COLUMNA IZQUIERDA: GALERÍA --- */
+.modal-galeria {
+    width: 340px !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Contenedor de la foto principal */
+.modal-img-container {
+    width: 100%;
+    height: 330px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f9f9f9;
+    border: 1px solid #f2bcd5;
+}
+
+.modal-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporción sin deformar */
+    object-position: center;
+}
+
+/* Fila de miniaturas centradita */
+.miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 55px;
+}
+
+.miniaturas .thumb {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.miniaturas .thumb:hover,
+.miniaturas .thumb.active {
+    border-color: #f15b9f;
+    transform: scale(1.05);
+}
+
+/* --- COLUMNA DERECHA: INFORMACIÓN --- */
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el botón siempre al fondo */
+    height: 100%;
+}
+
+.modal-info-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 6px;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.modal-info-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #f15b9f;
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Contenedor con scroll si la descripción es muy larga */
+.modal-descripcion-container {
+    max-height: 220px;
+    overflow-y: auto;
+    margin: 15px 0;
+    padding-right: 8px;
+}
+
+.modal-descripcion-container p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Botón de agregar al carrito */
+.btn-agregar-modal {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #ff72b6, #f15b9f);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(241, 91, 159, 0.35);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-agregar-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 91, 159, 0.5);
+}
+/* =========================
+   ESTILOS UPSELL RAMO (MODAL)
+========================= */
+.upsell-checkbox-container {
+    margin: 15px 0;
+    padding: 12px;
+    background-color: #fdf5f9; /* Fondo suave para que resalte */
+    border-radius: 8px;
+    border: 1px solid #f8bbd0;
+}
+
+.upsell-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.upsell-label input {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+/* El fondo oscuro del modal flotante */
+.modal-ramo-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000; /* Siempre por encima del carrito */
+}
+
+/* La cajita blanca del centro */
+.modal-ramo-content {
+    /* Aquí llamamos a la imagen de fondo */
+    background: url('/static/fondo.png') center center; 
+    
+    /* Le decimos que cubra todo el cuadro sin deformarse */
+    background-size: cover; 
+    
+    /* Hacemos que el patrón se repita si la imagen es pequeña */
+    background-repeat: repeat;
+    
+    padding: 30px; 
+    border-radius: 12px;
+    width: 95%; 
+    max-width: 800px;
+    position: relative;
+    text-align: center;
+    
+    /* Agregamos una sombra fuerte para que el cuadro resalte sobre la pantalla oscura */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.close-ramo {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #999;
+}
+
+
+/* Cuadrícula de 3 columnas para computadores */
+.ramo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea exactamente 3 columnas del mismo tamaño */
+    gap: 15px;
+    max-height: 85vh;
+}
+
+/* Para que la quinta imagen quede centrada abajo si son impares */
+.ramo-grid .ramo-item:last-child:nth-child(odd) {
+    grid-column: auto; 
+    width: 100%;
+    margin: 0;
+}
+
+.ramo-item {
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.ramo-item:hover {
+    border-color: #6a1b9a;
+    transform: scale(1.05);
+}
+
+.ramo-item img {
+    width: 100%;
+    height: 35  0px; /* Un tamaño ideal para que las 3 fotos queden proporcionadas */
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+/* =========================
+   ESTILOS BANNER MAYORISTAS
+========================= */
+.banner-mayorista {
+    background-color: #c39cd3; /* Color morado suave de la imagen */
+    text-align: center;
+    padding: 60px 20px;
+    margin: 40px 0; /* Da un poco de espacio arriba y abajo */
+}
+
+.banner-mayorista h2 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.banner-mayorista p {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.btn-mayorista {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px; /* Bordes redondeados del botón */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+/* Efecto al pasar el mouse por encima */
+.btn-mayorista:hover {
+    background-color: #333333;
+}
+
+/* Efecto al hacer clic */
+.btn-mayorista:active {
+    transform: scale(0.98);
+}
+/* =========================
+   ESTILOS FORMULARIO DE CONTACTO
+========================= */
+.contacto-wrapper {
+    background-color: #fbfbfb; /* Fondo sutil gris/blanco de la imagen */
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.contacto-container {
+    width: 100%;
+    max-width: 800px; /* Limita el ancho en pantallas grandes para que no se estire de más */
+}
+
+.contacto-titulo {
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 25px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio uniforme entre todas las filas */
+}
+
+.contacto-fila {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.contacto-input,
+.contacto-textarea {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #ffffff;
+    outline: none;
+    color: #333333;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+/* Efecto sutil al hacer clic en un campo para escribir */
+.contacto-input:focus,
+.contacto-textarea:focus {
+    border-color: #a0a0a0; 
+}
+
+.contacto-textarea {
+    min-height: 150px;
+    resize: vertical; /* Solo permite al usuario estirarlo hacia abajo, no hacia los lados */
+}
+
+.contacto-btn {
+    background-color: #ef648d; /* Color rosado exacto del botón */
+    color: #ffffff;
+    border: none;
+    padding: 12px 36px;
+    border-radius: 8px; /* Bordes suavemente redondeados */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start; /* Mantiene el botón pegado a la izquierda */
+    transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.contacto-btn:hover {
+    background-color: #d8537a; /* Un tono un poco más oscuro al pasar el mouse */
+}
+
+.contacto-btn:active {
+    transform: scale(0.98); /* Pequeño efecto de hundimiento al hacer clic */
+}
+
+/* =========================
+   ESTILOS NUESTRAS CATEGORÍAS
+========================= */
+.categorias-sectionn {
+    padding: 40px 20px;
+    background-color: transparent; /* Fondo gris muy clarito como en la imagen */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categorias-tituloo {
+    color: #ed5f8a; /* Rosado característico del título */
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Grilla de 2 columnas */
+.categorias-gridd {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* Tarjeta individual */
+.categoria-cardd {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.categoria-cardd:hover {
+    transform: scale(1.02); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
+/* Contenedor de la imagen y los textos superpuestos */
+.categoria-img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Mantiene un formato rectangular horizontal */
+    background-color: #e5b3c3; /* Fondo base por si la imagen tarda en cargar */
+    overflow: hidden;
+}
+
+.categoria-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen llene el cuadro sin deformarse */
+    filter: brightness(0.7);
+}
+
+/* Textos blancos flotantes sobre la imagen */
+.categoria-overlay {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.15); /* Sombra suave para que resalte */
+}
+
+
+/* El enlace rosado debajo de la imagen */
+.categoria-link {
+    margin-top: 15px;
+    text-align: center;
+    color: #ed5f8a;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO PARA CELULARES
+   ========================================== */
+@media (min-width: 320px) and (max-width: 900px) {
+    header {
+        display: flex;
+        flex-direction: row; /* Fuerza a que todo esté en la misma línea */
+        align-items: center; /* Centra todo verticalmente */
+        justify-content: space-between; /* Distribuye el espacio entre los 3 bloques */
+        padding: 10px 5px;
+        width: 100%;
+        gap: 8px; /* Pequeño margen de seguridad entre bloques */
+    }
+
+    /* 1. EL LOGO (Izquierda) */
+    .logo {
+        flex-shrink: 0; /* Evita que el logo se aplaste o deforme */
+    }
+    .logo img {
+        width: 75px !important; /* Lo hacemos más pequeño para que quepa todo */
+        height: auto;
+        margin: 0 !important; 
+        padding: 0 !important; 
+        display: block; 
+    }
+
+    /* 2. LA BARRA DE BÚSQUEDA (Centro) */
+    .search-bar { /* <-- Verifica que esta sea la clase de tu buscador */
+        flex-grow: 1; /* Le dice a la barra que ocupe todo el espacio sobrante del medio */
+        min-width: 0; /* Truco para que no desborde la pantalla */
+    }
+    
+    /* Si tienes un <input> dentro de la barra, asegúrate de que se adapte */
+    .search-bar input {
+        width: 100%;
+        padding: 6px 10px;
+        font-size: 1px !important; /* Letra un poco más pequeña para celular */
+    }
+
+    /* 3. LOS ÍCONOS DE CARRITO Y USUARIO (Derecha) */
+    .header-icons { /* <-- Verifica que esta sea la clase de tu contenedor de íconos */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px; /* Espacio entre el carrito y el admin */
+        flex-shrink: 0; /* Protege a los íconos de ser aplastados */
+    }
+    
+    /* Hacemos los íconos un poquitito más pequeños para ganar espacio */
+    .header-icons img, 
+    .header-icons i { 
+        width: 28px;
+        height: 28px;
+    }
+    .titulo-categorias{
+        font-size: 36px;
+    }
+    .section-title{
+        font-size: 36px;
+    }
+    .categorias-grid {
+        gap: 10px !important;
+        padding: 0 20px !important;
+    }
+
+    /* 1. AGREGAR ESTO: Achica directamente la imagen del círculo */
+    .categorias-grid img {
+        width: 100px !important;  /* Ajusta este valor (ej. 90px, 110px) según lo que prefieras */
+        height: 100px !important; /* Debe ser igual al width para que siga siendo un círculo perfecto */
+    }
+
+    /* 2. OPCIONAL: Achica un poco la letra de la categoría para mantener la proporción */
+    .categorias-grid p, 
+    .categorias-grid h3 { /* Usa p o h3 dependiendo de la etiqueta que usaste en tu HTML */
+        font-size: 14px !important;
+        margin-top: 5px !important;
+    }
+    .testimonios-grid {
+        display: grid !important; /* Activa el sistema de cuadrícula */
+        grid-template-columns: repeat(2, 1fr) !important; /* ¡Esta es la magia! Crea 2 columnas exactamente iguales */
+        gap: 10px !important;
+        padding: 0 10px !important; /* Bajamos el padding a 10px para ganar espacio horizontal */
+    }
+
+    /* 1. Achica directamente la imagen del círculo */
+    /* Como ahora las tarjetas son más estrechas, te recomiendo bajar este valor a unos 60px o 70px */
+    .testimonios-grid img {
+        width: 70px !important;  
+        height: 70px !important; 
+        margin: 0 auto; /* Ayuda a centrar la imagen si es necesario */
+    }
+
+    /* 2. Achica un poco la letra para mantener la proporción */
+    .testimonios-grid p, 
+    .testimonios-grid h3 { 
+        font-size: 12px !important; /* Un poco más pequeña para que el texto no desborde la nueva tarjeta */
+        margin-top: 5px !important;
+    }
+    
+    /* 3. OPCIONAL: Achica las estrellitas si son muy grandes */
+    .testimonio-card .estrellas { /* Cambia .estrellas por la clase que uses para las ⭐ */
+        font-size: 12px !important;
+    }
+    .banner-pagos img {
+        width: 200% !important; 
+        max-width: none !important;
+        margin: 20px 0 !important; /* Quitamos el 'auto' para que deje de intentar centrarla a la fuerza */
+        
+        /* Esta es la línea mágica para deslizarla a la izquierda */
+        transform: translateX(-25%) !important; 
+    }
+    .categoria-overlay{
+        font-size: 20px;
+    }
+    .hero-texto{
+            top: 40%;
+            height: 35vh;
+    }
+    .productos {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Crea 2 columnas iguales */
+        gap: 10px !important; /* Espacio entre los productos */
+        
+        /* Eliminamos los espacios gigantes de arriba */
+        margin-top: -230px !important; 
+        padding-top: 0 !important; 
+        
+        /* Un poco de espacio a los lados para que no toquen los bordes del celular */
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* 2. Le quitamos el ancho fijo a la tarjeta para que quepa en su columna */
+    .slider-productos .card, 
+    .card {
+        width: 100% !important; /* Ahora el ancho lo decide la columna del grid, no los 260px fijos */
+        margin-top: 0 !important; /* Por si la tarjeta tenía margen residual */
+        min-height: auto !important;
+    }
+
+    /* 3. Opcional: Achicar un poco los textos e imágenes de la tarjeta para que se vea estético */
+    .card img {
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    .card h3, .card .titulo-producto { /* Ajusta a la clase que uses para el título del producto */
+        font-size: 13px !important;
+    }
+    
+
+    .modal-producto-content {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        gap: 1px;
+        width: 90% !important;
+        max-width: 320px !important; /* Un poco más angosto, como el del ramo */
+        max-height: 85vh !important; /* Evita que se salga de la pantalla */
+        overflow-y: auto !important; /* Activa el scroll interno si el texto es muy largo */
+        
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px !important;
+        margin: 0 !important;
+        border-radius: 15px !important;
+    }
+
+    /* 2. Achicamos la foto MUCHO MÁS para que deje espacio al botón y al texto */
+    .modal-galeria {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .modal-galeria > img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: 160px !important; /* ¡Esta es la clave! Obliga a la foto a no medir más de 160px de alto */
+        object-fit: contain !important;
+        margin: 0 auto !important;
+    }
+
+    /* 3. Achicamos las fotos pequeñitas de abajo (miniaturas) */
+    .miniaturas {
+        margin-top: 10px !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+    .miniaturas img {
+        height: 40px !important;
+        width: 40px !important;
+    }
+
+    /* 4. Subimos la información y ajustamos el texto para que todo quepa */
+    .modal-info {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        margin-top: 15px !important;
+    }
+    
+    .modal-info h2 { 
+        font-size: 18px !important; 
+        margin-bottom: 5px !important; 
+    }
+    
+    .modal-info .precio { 
+        font-size: 18px !important; 
+        margin-bottom: 8px !important; 
+        color: #e91e63 !important; /* Le da el color rosado a tu precio */
+    }
+    
+    .modal-info p { 
+        font-size: 13px !important; 
+        line-height: 1.3 !important; 
+        margin-bottom: 15px !important; 
+    }
+    
+    /* 5. Aseguramos que el botón de agregar al carrito no se esconda */
+    .modal-info button {
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 14px !important;
+        margin-top: auto !important; /* Empuja el botón al final del cuadro */
+    }
+    /* 2. Galería compacta sin altura forzada */
+    .modal-galeria {
+        width: 100% !important;
+        height: auto !important; /* ¡CLAVE 1! Anula la altura gigante que venía del PC */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .modal-galeria > img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: 160px !important; 
+        object-fit: contain !important;
+        margin: 0 auto !important;
+    }
+
+    /* 3. Información sin espacios extra */
+    .modal-info {
+        width: 100% !important;
+        height: auto !important; /* ¡CLAVE 2! Evita que la caja de texto se estire */
+        justify-content: flex-start !important; /* Evita que el texto y el botón se separen a los extremos */
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        
+        /* Reducimos este margen para acercar el texto a la foto */
+        margin-top: 5px !important; 
+    }
+    .login-box {
+        width: 92% !important; 
+        max-width: none !important; /* Quitamos el límite de ancho para celulares */
+        padding: 40px 25px !important; 
+        margin: 40px auto !important; 
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Logo aún más grande */
+    .logo-login {
+        width: 220px !important; /* Lo subimos a 220px para que resalte mucho más */
+        height: auto !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 3. ¡LA CLAVE! Obligamos al formulario a estirarse de lado a lado */
+    .login-box form {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 4. Campos de texto gigantes */
+    .login-box input {
+        width: 100% !important;
+        padding: 18px 15px !important; /* Relleno súper grueso */
+        font-size: 16px !important; 
+        margin-bottom: 18px !important;
+        border-radius: 12px !important;
+        box-sizing: border-box !important; /* Evita que el relleno rompa la caja */
+    }
+
+    /* 5. Botón inmenso */
+    .login-box button {
+        width: 100% !important;
+        padding: 18px !important; 
+        font-size: 20px !important; /* Letra más grande para el botón */
+        font-weight: bold !important;
+        border-radius: 12px !important;
+        margin-top: 10px !important;
+        box-sizing: border-box !important;
+    }
+    .admin-header {
+        display: flex !important;
+        flex-direction: column !important; /* Título arriba, botones abajo */
+        align-items: center !important;
+        gap: 15px !important;
+        margin-bottom: 25px !important;
+    }
+
+    /* 2. Achicamos la letra y la forzamos a estar en una sola línea */
+    .admin-header h1 {
+        font-size: 24px !important; /* Letra más pequeña para que quepa */
+        text-align: center !important;
+        white-space: nowrap !important; /* ¡Esta es la magia! Prohíbe que el texto salte a la siguiente línea */
+        margin: 0 !important;
+    }
+
+    /* 3. Acomodamos los botones debajo bien centrados */
+    .admin-actions {
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important; /* Si los botones no caben, se acomodan solos */
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    /* 4. Achicamos sutilmente los botones para que se vean estéticos en celular */
+    .admin-actions a, 
+    .admin-actions button {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+    }
+    .tabla-card {
+        width: 100% !important;
+        overflow-x: auto !important; /* Mágicamente crea una barra de scroll horizontal solo para la tabla */
+        -webkit-overflow-scrolling: touch !important; /* Hace que el deslizamiento sea súper suave en pantallas táctiles */
+        padding: 10px !important; /* Reducimos el padding de la tarjeta para ganar espacio */
+    }
+
+    /* 2. Forzamos a la tabla a no apachurrarse */
+    .tabla-card table {
+        width: 100% !important;
+        min-width: 650px !important; /* Le decimos a la tabla que mida al menos 650px. Lo que sobre, generará el scroll */
+    }
+
+    /* 3. Achicamos sutilmente los textos e imágenes para que quepa más información a la vista */
+    .tabla-card th, 
+    .tabla-card td {
+        font-size: 13px !important;
+        padding: 8px 5px !important;
+    }
+    
+    .img-admin {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    /* 1. Achicamos el círculo verde y lo pegamos más a la esquina */
+    .whatsapp-btn {
+        width: 50px !important;
+        height: 50px !important;
+        left: 15px !important;   /* Lo acerca al borde izquierdo */
+        bottom: 15px !important; /* Lo acerca al borde inferior */
+    }
+
+    /* 2. Achicamos el ícono blanco del teléfono para que encaje bien */
+    .whatsapp-btn i {
+        font-size: 26px !important;
+    }
+    .modal-ramo-content {
+        overflow-y: auto !important;
+        max-height: 90vh !important;
+        padding: 20px !important; /* Un poco menos de espacio a los lados para ganar pantalla */
+    }
+
+    /* 2. Cambiamos la cuadrícula de 3 columnas a 1 sola columna vertical */
+    .ramo-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 15px !important;
+    }
+
+    /* 3. Achicamos un poco la altura de las fotos para que no ocupen toda la pantalla al apilarse */
+    .ramo-item img {
+        height: 240px !important; /* Le subí 10px para que destaque un poco más */
+        width: auto !important;   /* ¡ESTA ES LA CLAVE! El ancho se ajusta a la foto, eliminando los huecos blancos */
+        max-width: 100% !important;
+        object-fit: contain !important; 
+        
+        display: block !important; /* Necesario para que el centrado funcione */
+        margin: 0 auto !important; /* Centra la cajita perfectamente en la pantalla */
+        
+        border: 2px solid #f2bcd5 !important;
+        border-radius: 12px !important;
+        padding: 5px !important;
+        background-color: #ffffff !important;
+    }
+    /* 1. Reducimos el relleno interno de la tarjeta para ganar espacio */
+    .slider-productos .card,
+    .card {
+        padding: 10px !important; 
+        justify-content: flex-start !important; /* Evita que los elementos se separen a los extremos */
+        width: 100% !important;
+    }
+
+    /* 2. ¡LA CLAVE! Achicamos drásticamente la caja invisible de la foto */
+    .card-img-wrapper {
+        height: 120px !important; /* Bajamos de 220px a 120px */
+        margin-top: 5px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* 3. Ajustamos el texto para que no exija tanto espacio vertical */
+    .card-content h3 {
+        min-height: auto !important; /* Anula la altura mínima que venía del PC */
+        margin-bottom: 5px !important;
+        font-size: 13px !important;
+    }
+    .modal-pedido-content {
+        max-height: 85vh !important;  /* La caja nunca será más alta que el 85% de la pantalla */
+        overflow-y: auto !important;  /* ¡LA CLAVE! Permite deslizar hacia arriba y abajo por dentro */
+        padding-bottom: 30px !important; /* Da un respiro extra al final para que el botón no quede pegado al borde */
+    }
+    .pedido-exitoso-overlay {
+        align-items: center !important; 
+        justify-content: center !important; 
+        padding: 20px !important; 
+    }
+
+    /* 1. Tarjeta súper reducida y sin scroll */
+    .pedido-exitoso-card {
+        margin: auto !important; 
+        height: auto !important; 
+        min-height: auto !important;
+        
+        width: 100% !important;
+        max-width: 280px !important; /* Aún más angosta para verse delicada */
+        
+        padding: 25px 20px !important; /* Reducimos el relleno interno */
+        border-radius: 15px !important; 
+        
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Asegura que todo quede centrado */
+        justify-content: center !important;
+        gap: 15px !important; 
+        
+        overflow: hidden !important; /* ¡LA CLAVE! Corta de raíz cualquier intento de hacer scroll */
+    }
+
+    /* 2. Logo más pequeño y centrado */
+    .logo-exitoso {
+        width: 110px !important; /* Bajamos el tamaño para que no domine toda la pantalla */
+        height: auto !important;
+        margin: 0 auto !important; 
+        display: block !important;
+    }
+
+    /* 3. Achicamos el título para que encaje perfecto */
+    .pedido-exitoso-card h2 {
+        font-size: 22px !important;
+        margin: 0 !important;
+        text-align: center !important;
+    }
+
+    /* 4. ¡LA MAGIA! Escondemos los textos largos para ahorrar espacio */
+    .pedido-exitoso-card p {
+        font-size: 15px; /* Esto hace que los párrafos desaparezcan por completo en el celular */
+    }
+
+    /* 5. Botón más ajustado */
+    .pedido-exitoso-card button {
+        margin-top: 5px !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+        width: 100% !important;
+    }
+}

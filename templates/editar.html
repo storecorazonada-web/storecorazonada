@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Producto</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h2>Editar Producto</h2>
+
+    <form method="POST">
+
+    <label>Nombre del Producto</label>
+
+    <input
+        type="text"
+        name="nombre"
+        value="{{ producto.nombre }}"
+        placeholder="Nombre del producto"
+        required>
+
+    <label>Descripción</label>
+
+    <textarea
+        name="descripcion"
+        rows="4"
+        placeholder="Descripción del producto">{{ producto.descripcion or '' }}</textarea>
+
+    <label>Categoría</label>
+
+    <select name="categoria" required>
+
+        <option value="Maquillaje" {% if producto.categoria == 'Maquillaje' %}selected{% endif %}>
+            Maquillaje
+        </option>
+
+        <option value="Skincare" {% if producto.categoria == 'Skincare' %}selected{% endif %}>
+            Skincare
+        </option>
+
+        <option value="Cabello" {% if producto.categoria == 'Cabello' %}selected{% endif %}>
+            Cabello
+        </option>
+
+        <option value="Perfumes" {% if producto.categoria == 'Perfumes' %}selected{% endif %}>
+            Perfumes
+        </option>
+
+        <option value="Belleza" {% if producto.categoria == 'Belleza' %}selected{% endif %}>
+            Belleza
+        </option>
+
+        <option value="Accesorios" {% if producto.categoria == 'Accesorios' %}selected{% endif %}>
+            Accesorios
+        </option>
+
+    </select>
+
+    <label>Precio</label>
+
+    <input
+        type="number"
+        name="precio"
+        value="{{ producto.precio }}"
+        placeholder="Precio"
+        required>
+
+    <label>Stock</label>
+
+    <input
+        type="number"
+        name="stock"
+        value="{{ producto.stock }}"
+        placeholder="Cantidad disponible"
+        required>
+
+    <label>URL Imagen</label>
+
+    <input
+        type="text"
+        name="imagen"
+        value="{{ producto.imagen }}"
+        placeholder="URL de la imagen"
+        required>
+
+    <input name="imagen_2" value="{{ producto.imagen_2 }}">    
+    <input name="imagen_3" value="{{ producto.imagen_3 }}">
+
+    <button type="submit">
+        Actualizar
+    </button>
+
+</form>
+
+</div>
+
+</body>
+</html>
