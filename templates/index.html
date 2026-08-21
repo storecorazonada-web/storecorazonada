@@ -100,15 +100,6 @@
         </a>
     </div>
 
-    <div class="slide">
-        <a href="/belleza" style="display: block; width: 100%; height: 100%; text-decoration: none; color: inherit; cursor: pointer;">
-            <img src="{{ url_for('static', filename='banner5.jpg') }}">
-            <div class="slide-text">
-                <h1>Resalta tu belleza natural</h1>
-                <p>Los mejores productos para potenciar tu estilo y cuidar de ti todos los días.</p>
-            </div>
-        </a>
-    </div>
 
 </section>
 
@@ -139,13 +130,8 @@
         </a>
 
         <a href="{{ url_for('belleza') }}" class="categoria">
-            <img src="{{ url_for('static', filename='cat-belleza.jpg') }}">
-            <span>Belleza</span>
-        </a>
-
-        <a href="{{ url_for('accesorios') }}" class="categoria">
             <img src="{{ url_for('static', filename='cat-accesorios.jpg') }}">
-            <span>Accesorios</span>
+            <span>Belleza</span>
         </a>
 
     </div>
@@ -241,15 +227,21 @@
     <div id="cartItems"></div>
 
     <div class="cart-footer">
+
+        <div id="mensaje-envio" style="text-align: center; margin-bottom: 12px; font-size: 15px; font-weight: bold; padding: 5px; background-color: #f9f9f9; border-radius: 5px;">
+        🚚 Envío: $ 10.000
+        </div>
+
+
         <!-- Checkbox de Ramo -->
-<div class="upsell-checkbox-container">
+    <div class="upsell-checkbox-container">
     <label class="upsell-label">
         <input type="checkbox" id="checkRamo" onchange="manejarCheckboxRamo(this)">
         <span>¿Deseas agregar un hermoso ramo por $15.000?</span>
     </label>
-    <!-- Aquí aparecerá el nombre del ramo que elijan -->
-    <div id="ramoElegidoTexto" style="display:none; margin-top: 5px; font-size: 13px; color: #6a1b9a; font-weight: bold;"></div>
-</div>
+        <!-- Aquí aparecerá el nombre del ramo que elijan -->
+        <div id="ramoElegidoTexto" style="display:none; margin-top: 5px; font-size: 13px; color: #6a1b9a; font-weight: bold;"></div>
+    </div>
         <h3>
             Total: $
             <span id="total">0</span>
@@ -304,10 +296,10 @@
         </a>
 
         <!-- Cuadro 4: Accesorios -->
-        <a href="/accesorios" class="categoria-cardd">
+        <a href="/belleza" class="categoria-cardd">
             <div class="categoria-img-container">
-                <img src="/static/cat-accesorios.jpg" alt="Accesorios">
-                <div class="categoria-overlay">LÍNEA DE<br>ACCESORIOS</div>
+                <img src="/static/cat-accesorios.jpg" alt="Belleza">
+                <div class="categoria-overlay">LÍNEA DE<br>BELLEZA</div>
             </div>
             <div class="categoria-link">Línea Accesorios &rarr;</div>
         </a>
@@ -339,7 +331,7 @@
     <div class="testimonios-grid">
 
         <div class="testimonio-card">
-            <h3>Nathalya</h3>
+            <h3>Natalia Amaya</h3>
             <!-- Toma la imagen del producto 1 de la base de datos -->
             <img src="{{ productos[0].imagen if productos|length > 0 and productos[0].imagen else url_for('static', filename='producto-default.jpg') }}">
             <div class="estrellas">⭐⭐⭐⭐⭐</div>
@@ -347,7 +339,7 @@
         </div>
 
         <div class="testimonio-card">
-            <h3>Valentina</h3>
+            <h3>Valentina Suarez</h3>
             <!-- Toma la imagen del producto 2 -->
             <img src="{{ productos[1].imagen if productos|length > 1 and productos[1].imagen else url_for('static', filename='producto-default.jpg') }}">
             <div class="estrellas">⭐⭐⭐⭐⭐</div>
@@ -355,7 +347,7 @@
         </div>
 
         <div class="testimonio-card">
-            <h3>Carmen Cecilia</h3>
+            <h3>Carmen Bejarano</h3>
             <!-- Toma la imagen del producto 3 -->
             <img src="{{ productos[2].imagen if productos|length > 2 and productos[2].imagen else url_for('static', filename='producto-default.jpg') }}">
             <div class="estrellas">⭐⭐⭐⭐⭐</div>
@@ -363,7 +355,7 @@
         </div>
 
         <div class="testimonio-card">
-            <h3>Loriannys</h3>
+            <h3>Maria Gonzalez</h3>
             <!-- Toma la imagen del producto 4 -->
             <img src="{{ productos[3].imagen if productos|length > 3 and productos[3].imagen else url_for('static', filename='producto-default.jpg') }}">
             <div class="estrellas">⭐⭐⭐⭐⭐</div>
@@ -498,8 +490,31 @@
 
             <div class="input-group">
                 <i class="fa-solid fa-city"></i>
-                <input type="text" id="ciudad" placeholder="Ciudad / Municipio" required>
-            </div>
+                <input type="text" id="ciudad" list="ciudades-colombia" placeholder="Ciudad / Municipio" autocomplete="off" required>
+        
+        <datalist id="ciudades-colombia">
+            <option value="Bogotá">
+            <option value="Medellín">
+            <option value="Cali">
+            <option value="Barranquilla">
+            <option value="Cartagena">
+            <option value="Cúcuta">
+            <option value="Soacha">
+            <option value="Soledad">
+            <option value="Bucaramanga">
+            <option value="Bello">
+            <option value="Villavicencio">
+            <option value="Ibagué">
+            <option value="Santa Marta">
+            <option value="Valledupar">
+            <option value="Manizales">
+            <option value="Pereira">
+            <option value="Montería">
+            <option value="Neiva">
+            <option value="Pasto">
+            <option value="Armenia">
+        </datalist>
+    </div>
 
             <button type="submit" class="btn-confirmar-pedido">
                 Confirmar Pedido

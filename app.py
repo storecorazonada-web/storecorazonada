@@ -444,19 +444,6 @@ def belleza():
         productos=productos
     )
 
-@app.route("/accesorios")
-def accesorios():
-
-    productos = Producto.query.filter_by(
-        categoria="Accesorios"
-    ).all()
-
-    return render_template(
-        "accesorios.html",
-        productos=productos
-    )
-
-
 # =========================
 # CREAR TABLAS
 # =========================

@@ -512,8 +512,6 @@ header{
     padding: 30px;
     border-radius: 20px;
     position: relative;
-
-    /* Cambiamos a Flexbox en horizontal */
     display: flex;
     gap: 30px;
     align-items: center;
@@ -1811,9 +1809,7 @@ td{
     border-radius: 24px !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
     background: #ffffff !important;
-    
-    /* Asegura que nada se salga de los bordes redondeados */
-    overflow: hidden !important; 
+    overflow-y: auto !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;

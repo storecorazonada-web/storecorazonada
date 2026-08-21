@@ -98,12 +98,14 @@ if (addCart) {
         renderCarrito();
         cerrarModal();
 
-        side.classList.add("active");
+        // Abre la pestaña lateral del carrito
+        const side = document.getElementById("sidebarCart");
+        if (side) side.classList.add("active");
     };
 }
 
 // ==============================
-// RENDER CARRITO MEJORADO
+// RENDER CARRITO
 // ==============================
 
 function renderCarrito() {
@@ -149,6 +151,34 @@ function renderCarrito() {
     // ===============================================
     total += valorRamoExtra;
 
+    // ===============================================
+    // LÓGICA DE ENVÍO Y ACTUALIZACIÓN VISUAL
+    // ===============================================
+    const mensajeEnvio = document.getElementById("mensaje-envio");
+
+    if (total > 0 && total < 100000) {
+        total += 10000; // Se cobra el envío
+        if (mensajeEnvio) {
+            mensajeEnvio.innerText = "🚚 Envío: $ 10.000";
+            mensajeEnvio.style.color = "#333";
+        }
+    } else if (total >= 100000) {
+        // No se suma nada, el envío es gratis
+        if (mensajeEnvio) {
+            mensajeEnvio.innerText = "✨ ¡Envío Gratis! ✨";
+            mensajeEnvio.style.color = "#d63384"; // Color fucsia
+        }
+    } else {
+        // Si el carrito está vacío
+        if (mensajeEnvio) {
+            mensajeEnvio.innerText = "🚚 Envío: $ 10.000";
+            mensajeEnvio.style.color = "#333";
+        }
+    }
+
+    // ===============================================
+    // ACTUALIZAR LA PANTALLA
+    // ===============================================
     const cartItems = document.getElementById("cartItems");
     if (cartItems) cartItems.innerHTML = html;
     
@@ -158,7 +188,6 @@ function renderCarrito() {
     const totalElem = document.getElementById("total");
     if (totalElem) totalElem.innerText = total.toLocaleString("es-CO");
 }
-
 // ==============================
 // ELIMINAR PRODUCTO
 // ==============================
