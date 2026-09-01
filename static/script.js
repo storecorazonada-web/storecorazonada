@@ -333,19 +333,63 @@ window.addEventListener("load", () => {
                     cerrarPedido();
 
                     if (metodoPagoSeleccionado === "Contra Entrega") {
-                        // Flujo Contra Entrega
+                        
+                        // 1. Capturamos los datos para la notificación y el resumen
+                        let clienteVal = document.getElementById('cliente').value;
+                        let telefonoVal = document.getElementById('telefono').value;
+                        let direccionVal = document.getElementById('direccion').value;
+                        let ciudadVal = document.getElementById('ciudad').value;
+                        let totalVal = document.getElementById('total').innerText;
+
+                        // 2. Inyectamos los datos en el modal de éxito (Visual para el cliente)
                         const modalExito = document.getElementById("pedidoExitoso");
                         if (modalExito) {
+                            modalExito.innerHTML = `
+                                <div class="modal-content" style="background: #fff; padding: 25px; border-radius: 12px; text-align: center; max-width: 400px; margin: auto;">
+                                    <h2>🎉 ¡Pedido Exitoso! 🎉</h2>
+                                    <p>Hemos registrado tu orden correctamente.</p>
+                                    <div style="background: #f9f9f9; padding: 12px; border-radius: 8px; margin: 15px 0; text-align: left; font-size: 14px;">
+                                        <p><strong>Cliente:</strong> ${clienteVal}</p>
+                                        <p><strong>Dirección:</strong> ${direccionVal}</p>
+                                        <p><strong>Ciudad:</strong> ${ciudadVal}</p>
+                                        <p><strong>Total a pagar:</strong> $ ${totalVal}</p>
+                                    </div>
+                                    <button onclick="cerrarExitoso()" style="background: #d63384; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Aceptar</button>
+                                </div>
+                            `;
                             modalExito.style.display = "flex";
                         } else {
                             alert("¡Pedido registrado con éxito! Nos pondremos en contacto para la entrega.");
                         }
 
+                        // 3. ENVIAR NOTIFICACIÓN SILENCIOSA A TELEGRAM
+                        const tokenTelegram = "TU_TOKEN"; // Pon aquí tu Token de BotFather
+                        const chatIdTelegram = "TU_CHAT_ID"; // Pon aquí tu Chat ID
+                        
+                        const mensajeTelegram = `📦 *NUEVO PEDIDO CONTRA ENTREGA* 📦\n\n` +
+                                                `*Cliente:* ${clienteVal}\n` +
+                                                `*Teléfono:* ${telefonoVal}\n` +
+                                                `*Dirección:* ${direccionVal}\n` +
+                                                `*Ciudad:* ${ciudadVal}\n` +
+                                                `*Total:* $${totalVal}`;
+
+                        fetch(`https://api.telegram.org/bot${tokenTelegram}/sendMessage`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                chat_id: chatIdTelegram,
+                                text: mensajeTelegram,
+                                parse_mode: "Markdown"
+                            })
+                        }).catch(err => console.error("Error enviando alerta a Telegram", err));
+
+                        // 4. Limpieza del carrito
                         carrito = [];
                         guardarCarrito();
                         renderCarrito();
                         pedidoForm.reset();
                         if (side) side.classList.remove("active");
+
                     } else {
                         // Flujo PSE / Wompi
                         iniciarPagoWompi(total, data.pedido_id);
@@ -404,9 +448,6 @@ async function iniciarPagoWompi(totalMonto, pedidoId) {
             // redirectUrl: window.location.origin + '/pedidos'
         });
 
-        
-        
-        // Abrir pasarela
         // Abrir pasarela de Wompi
         checkout.open(function (result) {
             const transaction = result.transaction;
@@ -498,6 +539,10 @@ function cerrarModalRamo() {
         document.getElementById('checkRamo').checked = false;
     }
 }
+
+// ==============================
+// CONTACTO GENERAL (WHATSAPP)
+// ==============================
 function enviarWhatsApp(event) {
     // Esto evita que la página se recargue cuando le dan clic al botón
     event.preventDefault();
@@ -521,46 +566,9 @@ function enviarWhatsApp(event) {
     mensaje += `*Comentario:* ${comentario}`;
 
     // 3. Este es el número a donde llegará el mensaje (con el indicativo +57)
-    let numeroWhatsApp = "573118677095";
+    let numeroWhatsApp = "573118677095"; 
 
     // 4. Armamos el enlace final y lo abrimos en una nueva pestaña
     let url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
     window.open(url, "_blank");
-
-    /* ==========================================
-       ENVIAR PEDIDO A WHATSAPP
-       ========================================== */
-    document.getElementById('pedidoForm').addEventListener('submit', function(event) {
-        // 1. Evitamos que la página se recargue al darle al botón
-        event.preventDefault(); 
-
-        // 2. Capturamos lo que el cliente escribió en los campos
-        let cliente = document.getElementById('cliente').value;
-        let telefono = document.getElementById('telefono').value;
-        let direccion = document.getElementById('direccion').value;
-        let ciudad = document.getElementById('ciudad').value;
-        
-        // Capturamos el total del carrito
-        let total = document.getElementById('total').innerText;
-
-        // 3. Construimos el mensaje con formato (negritas y saltos de línea)
-        let mensaje = `📦 *NUEVO PEDIDO CONTRA ENTREGA* 📦%0A%0A`;
-        mensaje += `*Cliente:* ${cliente}%0A`;
-        mensaje += `*Teléfono:* ${telefono}%0A`;
-        mensaje += `*Dirección:* ${direccion}%0A`;
-        mensaje += `*Ciudad:* ${ciudad}%0A`;
-        mensaje += `*Total a cobrar:* $${total}%0A%0A`;
-        mensaje += `¡Hola! Confirmo los datos para el envío de mi pedido.`;
-
-        // 4. Tu número de teléfono
-        let numeroDestino = "573118677095";
-
-        // 5. Creamos el enlace oficial de WhatsApp y lo abrimos en una pestaña nueva
-        let url = `https://wa.me/${numeroDestino}?text=${mensaje}`;
-        window.open(url, '_blank');
-
-        // 6. (Opcional) Cerramos el modal de datos y mostramos tu ventana de "Pedido Exitoso"
-        document.getElementById('pedidoModal').style.display = 'none';
-        document.getElementById('pedidoExitoso').style.display = 'flex';
-    });
 }
