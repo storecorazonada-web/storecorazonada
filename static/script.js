@@ -363,8 +363,8 @@ window.addEventListener("load", () => {
                         }
 
                         // 3. ENVIAR NOTIFICACIÓN SILENCIOSA A TELEGRAM
-                        const tokenTelegram = "TU_TOKEN"; // Pon aquí tu Token de BotFather
-                        const chatIdTelegram = "TU_CHAT_ID"; // Pon aquí tu Chat ID
+                        const tokenTelegram = "8723532370:AAEP5g9UdnqXWv-jg2UvZ6YLoycwQhg0s3M"; // Pon aquí tu Token de BotFather
+                        const chatIdTelegram = "8808638380"; // Pon aquí tu Chat ID
                         
                         const mensajeTelegram = `📦 *NUEVO PEDIDO CONTRA ENTREGA* 📦\n\n` +
                                                 `*Cliente:* ${clienteVal}\n` +
