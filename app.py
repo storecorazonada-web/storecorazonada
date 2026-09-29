@@ -11,7 +11,7 @@ app.secret_key = "admin123"
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://neondb_owner:npg_z0oDLwZ1bAMJ@ep-dawn-bird-ahh8mj79-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+    "postgresql://postgres:z16LfhBXgMo870sE@db.kumcnohxfgkwblzwbvyh.supabase.co:5432/postgres"
 )
 
 
