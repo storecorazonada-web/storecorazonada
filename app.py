@@ -4,15 +4,14 @@ from datetime import datetime
 from sqlalchemy import func
 import pandas as pd
 import hashlib
+import os
 
 app = Flask(__name__)
 
 app.secret_key = "admin123"
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://postgres:z16LfhBXgMo870sE@db.kumcnohxfgkwblzwbvyh.supabase.co:5432/postgres"
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
